@@ -1,0 +1,19 @@
+<?php
+$action="admin";
+if(isset($_GET["action"]))
+{
+    $action=filter_var($_GET["action"],FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+}
+require("model/stagiaire.php");
+switch($action){
+    case"admin":
+        require("view/admin/pageAdmin.php");
+    break;
+    case "dashboard":
+        $lesStagiaires=fetchAllStagiaire();
+        require("view/admin/dashboard.php");
+    break;
+    default:
+    require("view/404.php");
+}
+?>
