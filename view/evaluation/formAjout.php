@@ -5,7 +5,7 @@ ob_start();
 <div class="container">
   
 <h1 class="text-center">Formualire Evaluation</h1>
-<form action="" method="post" novalidate>
+<form action="?path=evaluation&action=traitementAjout" method="post" novalidate>
     <input type="hidden" name="idStagiaire" readonly required value="<?=$idStagiaire?>">
     <div class="col-12 col-md-8 col-lg-6 mx-auto">
         <!-- Affichage si erreur-->
