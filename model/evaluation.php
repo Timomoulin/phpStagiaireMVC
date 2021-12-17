@@ -29,7 +29,7 @@ function fetchEvalById($unId){
 function fetchAllEvalByIdStagiaire($unId){
     try {
         $connex=etablirCo();
-        $sql =$connex->prepare("SELECT * FROM evaluation WHERE idStagiaire=:id order by dateEvaluation,idMatiere ");
+        $sql =$connex->prepare("SELECT * FROM evaluation inner join matiere on evaluation.idMatiere=matiere.idMatiere WHERE idStagiaire=:id order by dateEvaluation,evaluation.idMatiere ");
         $sql->bindParam(":id",$unId);
         $sql->execute();
         $sql->setFetchMode(PDO::FETCH_ASSOC);
