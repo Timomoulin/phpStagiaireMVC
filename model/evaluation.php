@@ -1,5 +1,5 @@
 <?php
-require ("bdd.php");
+require_once ("bdd.php");
 
 /**
  * Fonction qui retourne une evaluation
@@ -29,7 +29,7 @@ function fetchEvalById($unId){
 function fetchAllEvalByIdStagiaire($unId){
     try {
         $connex=etablirCo();
-        $sql =$connex->prepare("SELECT * FROM evaluation WHERE idStagiaire=:id ");
+        $sql =$connex->prepare("SELECT * FROM evaluation WHERE idStagiaire=:id order by dateEvaluation,idMatiere ");
         $sql->bindParam(":id",$unId);
         $sql->execute();
         $sql->setFetchMode(PDO::FETCH_ASSOC);

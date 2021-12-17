@@ -1,5 +1,5 @@
 <?php
-require ("bdd.php");
+require_once("bdd.php");
 
 /**
  * Fonction qui retourne les matieres

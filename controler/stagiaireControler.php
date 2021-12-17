@@ -5,7 +5,7 @@ if(isset($_GET["action"])){
     $action=filter_var($_GET["action"],FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 }
 require("model/stagiaire.php");
-
+require ("model/evaluation.php");
 switch($action){
     //Affiche les stagiaires
     case "stagiaires":
@@ -17,6 +17,7 @@ switch($action){
     case "stagiaire":
         $id=filter_var($_GET["id"],FILTER_SANITIZE_NUMBER_INT);
         $unStagiaire=fetchStagiaireById($id);
+        $lesEvaluations=fetchAllEvalByIdStagiaire($id);
         require("view/stagiaires/consulterStagiaire.php");
     break;
     case "formAjout":
@@ -34,12 +35,12 @@ switch($action){
             header("location:?path=admin&action=dashboard");
         }
         else{
-            $_SESSION["error"]="Echec de la modification";
+            $_SESSION["error"]="Echec de l'ajout";
             header("location:?path=stagiaire&action=formAjout");
         }
         break;
     case "formModif":
-        $id=filter_var($_GET["id"],FILTER_SANITIZE_STRING);
+        $id=filter_var($_GET["id"],FILTER_SANITIZE_NUMBER_INT);
         $leStagiaire=fetchStagiaireById($id);
         require ("view/stagiaires/formModif.php");
         break;

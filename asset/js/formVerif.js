@@ -15,7 +15,8 @@ for(let form of forms)
                     input.classList.add("is-invalid");
                     let msg = document.createElement("div");
                     msg.id = `msg${input.id}`;
-                    msg.classList.add('text-danger');
+                    msg.classList.add('alert');
+                    msg.classList.add("alert-danger");
                     msg.innerText = input.validationMessage;
                     input.parentElement.insertBefore(msg, input);
 
@@ -47,7 +48,8 @@ for(let form of forms)
                     if (!document.querySelector("#msg" + input.id)) {
                         let msg = document.createElement("div");
                         msg.id = `msg${input.id}`;
-                        msg.classList.add('alert alert-danger');
+                        msg.classList.add('alert');
+                        msg.classList.add("alert-danger");
                         msg.innerText = input.validationMessage;
                         input.parentElement.insertBefore(msg, input);
                     } else {

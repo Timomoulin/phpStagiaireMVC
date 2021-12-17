@@ -5,7 +5,7 @@ ob_start();
 <div class="container">
   
 <h1 class="text-center">Formualire Stagiaire</h1>
-<form action="?path=stagiaire&action=traitementAjout" method="post">
+<form action="?path=stagiaire&action=traitementAjout" method="post" novalidate>
     <div class="col-12 col-md-8 col-lg-6 mx-auto">
         <!-- Affichage si erreur-->
         <?php
