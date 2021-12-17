@@ -72,7 +72,7 @@ function fetchAllEvalByIdMatiere($unId){
 function createEvaluation($note,$date,$idMat,$idSta){
     try {
         $connex=etablirCo();
-        $sql =$connex->prepare("INSERT INTO evaluation (note,dateEvaluation,idMatiere,idStagiaire) values(:note,:date,:idM,:idS)");
+        $sql =$connex->prepare("INSERT INTO evaluation (note,dateEvaluation,idMatiere,idStagiaire) values(:note,:dateEvaluation,:idM,:idS)");
         $sql->bindParam(":note",$note);
         $sql->bindParam(":dateEvaluation",$date);
         $sql->bindParam(":idM",$idMat);
