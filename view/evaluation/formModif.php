@@ -1,6 +1,5 @@
 <?php
-$title="Formualaire Evaluation";
-ob_start();
+ 
 ?>
 <div class="container">
   

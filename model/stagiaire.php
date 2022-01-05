@@ -1,5 +1,6 @@
 <?php
 require_once ("bdd.php");
+require_once ("class/stagiaire.class.php");
 /**
  * Fonction qui retourne tout les stagiaires de la table
  *
@@ -12,8 +13,9 @@ function fetchAllStagiaire(){
         $sql =$connex->prepare("SELECT * FROM stagiaire ORDER BY idStagiaire");
 
         $sql->execute();
-        $sql->setFetchMode(PDO::FETCH_ASSOC);
-        $resultat = ($sql->fetchAll());
+
+        $sql->setFetchMode(PDO::FETCH_CLASS,"Stagiaire");
+        $resultat = $sql->fetchAll();
         return $resultat;
 
     } catch (PDOException $error) {
