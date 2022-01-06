@@ -22,15 +22,15 @@ ob_start();
         <input type="hidden" name="id" readonly value="<?=$id?>">
     <div class="row my-2">
         <label for="inputPrenom">Prenom</label>
-        <input class="form-control" name="prenom" id="inputPrenom" type="text" required minlength="2" value="<?=$leStagiaire["prenom"]?>">
+        <input class="form-control" name="prenom" id="inputPrenom" type="text" required minlength="2" value="<?=$leStagiaire->getPrenom()?>">
     </div>
     <div class="row my-2">
         <label for="inputNom">Nom</label>
-        <input class="form-control" name="nom" id="inputNom" type="text" required minlength="2" value="<?=$leStagiaire["nom"]?>">
+        <input class="form-control" name="nom" id="inputNom" type="text" required minlength="2" value="<?=$leStagiaire->getNom()?>">
     </div>
     <div class="row my-2">
         <label for="inputEmail">Email</label>
-        <input class="form-control" name="email" id="inputEmail" type="email" value="<?=$leStagiaire["email"]?>" required>
+        <input class="form-control" name="email" id="inputEmail" type="email" value="<?=$leStagiaire->getEmail()?>" required>
     </div>
     <div class="row my-2">
         <button class="btn btn-primary w-25">Envoyer</button>

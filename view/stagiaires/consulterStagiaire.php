@@ -23,15 +23,15 @@ ob_start();
     ?>
 </div>
 <div>
-    Nom : <?=$unStagiaire["nom"]?>
+    Nom : <?=$unStagiaire->getNom()?>
     <br>
-    Prenom : <?=$unStagiaire["prenom"]?>
+    Prenom : <?=$unStagiaire->getPrenom()?>
     <br>
-    Email : <?=$unStagiaire["email"]?>
+    Email : <?=$unStagiaire->getEmail()?>
     <br>
 </div>
 <div class="container">
-    <a href="?path=evaluation&action=formAjout&idStagiaire=<?=$unStagiaire["idStagiaire"]?>" class="btn btn-success">Ajouter une évaluation</a>
+    <a href="?path=evaluation&action=formAjout&idStagiaire=<?=$unStagiaire->getIdStagiaire()?>" class="btn btn-success">Ajouter une évaluation</a>
     <table class="table table-striped">
         <theader>
             <tr>
@@ -42,15 +42,18 @@ ob_start();
             </tr>
         </theader>
         <tbody>
-            <?php foreach($lesEvaluations as $uneEval){?>
+            <?php foreach($lesEvaluations as $uneEval){
+               
+                ?>
+
             <tr>
-                <td><?=$uneEval["dateEvaluation"]?></td>
-                <td><?=$uneEval["nomMatiere"]?></td>
-                <td><?=$uneEval["note"]?></td>
+                <td><?=$uneEval->getDateEvaluation()?></td>
+                <td><?=$uneEval->nomMatiere?></td>
+                <td><?=$uneEval->getNote()?></td>
                 <td>
-                    <a href="?path=evaluation&action=formModif&idEval=<?=$uneEval["idEvaluation"]?>" class="btn btn-info">Modifier</a>
+                    <a href="?path=evaluation&action=formModif&idEval=<?=$uneEval->getIdEvaluation()?>" class="btn btn-info">Modifier</a>
                     <form action="?path=evaluation&action=traitementSup" method="post">
-                        <input type="hidden" name="idEval" readonly value="<?=$uneEval["idEvaluation"]?>">
+                        <input type="hidden" name="idEval" readonly value="<?=$uneEval->getIdEvaluation()?>">
                         <button class="btn btn-danger">Supprimer</button>
                     </form>
                 </td>

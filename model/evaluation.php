@@ -1,6 +1,6 @@
 <?php
 require_once ("bdd.php");
-
+require_once("class/evaluation.class.php");
 /**
  * Fonction qui retourne une evaluation
  * @param $unId l'id de l'eval
@@ -12,7 +12,7 @@ function fetchEvalById($unId){
         $sql =$connex->prepare("SELECT * FROM evaluation WHERE idEvaluation=:id ");
         $sql->bindParam(":id",$unId);
         $sql->execute();
-        $sql->setFetchMode(PDO::FETCH_ASSOC);
+        $sql->setFetchMode(PDO::FETCH_CLASS,"Evaluation");
         $resultat = ($sql->fetch());
         return $resultat;
 
@@ -32,7 +32,7 @@ function fetchAllEvalByIdStagiaire($unId){
         $sql =$connex->prepare("SELECT * FROM evaluation inner join matiere on evaluation.idMatiere=matiere.idMatiere WHERE idStagiaire=:id order by dateEvaluation,evaluation.idMatiere ");
         $sql->bindParam(":id",$unId);
         $sql->execute();
-        $sql->setFetchMode(PDO::FETCH_ASSOC);
+        $sql->setFetchMode(PDO::FETCH_CLASS,"Evaluation");
         $resultat = ($sql->fetchAll());
         return $resultat;
 
@@ -52,7 +52,7 @@ function fetchAllEvalByIdMatiere($unId){
         $sql =$connex->prepare("SELECT * FROM evaluation WHERE idMatiere=:id ");
         $sql->bindParam(":id",$unId);
         $sql->execute();
-        $sql->setFetchMode(PDO::FETCH_ASSOC);
+        $sql->setFetchMode(PDO::FETCH_CLASS,"Evaluation");
         $resultat = ($sql->fetchAll());
         return $resultat;
 

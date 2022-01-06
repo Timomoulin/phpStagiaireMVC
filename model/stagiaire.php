@@ -35,7 +35,7 @@ function fetchStagiaireById($unId){
         $sql =$connex->prepare("SELECT * FROM stagiaire WHERE idStagiaire=:id ");
         $sql->bindParam(":id",$unId);
         $sql->execute();
-        $sql->setFetchMode(PDO::FETCH_ASSOC);
+        $sql->setFetchMode(PDO::FETCH_CLASS,"Stagiaire");
         $resultat = ($sql->fetch());
         return $resultat;
 
