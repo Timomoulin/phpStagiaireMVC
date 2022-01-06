@@ -33,14 +33,14 @@ elseif (isset($_SESSION["error"])){ ?>
         <?php foreach($lesStagiaires as $unStagiaire)
         { ?>
         <tr>
-            <td><?=$unStagiaire["nom"] ?></td>
-            <td><?= $unStagiaire["prenom"]?></td>
-            <td><?= $unStagiaire["email"]?></td>
+            <td><?=$unStagiaire->getNom() ?></td>
+            <td><?= $unStagiaire->getPrenom()?></td>
+            <td><?= $unStagiaire->getEmail()?></td>
             <td>
-                <a href="?path=stagiaire&action=formModif&id=<?=$unStagiaire["idStagiaire"]?>" class="btn bg-info">Modifier</a>
+                <a href="?path=stagiaire&action=formModif&id=<?=$unStagiaire->getIdStagiaire()?>" class="btn bg-info">Modifier</a>
 
                 <form action="?path=stagiaire&action=traitementSup" method="post">
-                    <input type="hidden" name="id" value="<?=$unStagiaire["idStagiaire"]?>">
+                    <input type="hidden" name="id" value="<?=$unStagiaire->getIdStagiaire()?>">
                     <button class="btn btn-danger">Supprimer</button>
                 </form>
             </td>
