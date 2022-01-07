@@ -32,7 +32,7 @@
            <select class="form-select" name="idMatiere" id="inputMatiere" required>
               
                <?php foreach($lesMatieres as $uneMatiere){ ?>
-                <option <?php if($uneMatiere["idMatiere"]==$uneEval["idMatiere"]){ echo"selected ";}?> value="<?=$uneMatiere["idMatiere"]?>"><?=$uneMatiere["nomMatiere"]?></option>
+                <option <?php if($uneMatiere->getIdMatiere()==$uneEval->getUdMatiere()){ echo"selected ";}?> value="<?=$uneMatiere->getIdMatiere()?>"><?=$uneMatiere->getNomMatiere()?></option>
                 <?php }?>
            </select>
         </div>

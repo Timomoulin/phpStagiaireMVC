@@ -1,6 +1,6 @@
 <?php
 require_once("bdd.php");
-
+require_once ("class/matiere.class.php");
 /**
  * Fonction qui retourne les matieres
  * @return array|false|void
@@ -11,7 +11,7 @@ function fetchAllMatiere(){
         $connex=etablirCo();
         $sql =$connex->prepare("SELECT * FROM Matiere ");
         $sql->execute();
-        $sql->setFetchMode(PDO::FETCH_ASSOC);
+        $sql->setFetchMode(PDO::FETCH_CLASS,"Matiere");
         $resultat = ($sql->fetchAll());
         return $resultat;
 
@@ -31,7 +31,7 @@ function fetchMatiereById($unId){
         $sql =$connex->prepare("SELECT * FROM Matiere WHERE idMatiere=:id ");
         $sql->bindParam(":id",$unId);
         $sql->execute();
-        $sql->setFetchMode(PDO::FETCH_ASSOC);
+        $sql->setFetchMode(PDO::FETCH_CLASS,"Matiere");
         $resultat = ($sql->fetch());
         return $resultat;
 
@@ -50,7 +50,7 @@ function fetchMatiereById($unId){
 function updateMatiere($unId,$unNom){
     try {
         $connex=etablirCo();
-        $sql =$connex->prepare("UPDATE Matiere SET nom=:nom WHERE idMatiere=:id");
+        $sql =$connex->prepare("UPDATE Matiere SET nomMatiere=:nom WHERE idMatiere=:id");
         $sql->bindParam(":nom",$unNom);
         $sql->bindParam(":id",$unId);
         $sql->execute();

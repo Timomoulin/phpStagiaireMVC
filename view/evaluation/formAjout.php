@@ -32,7 +32,7 @@ ob_start();
            <select class="form-select" name="idMatiere" id="inputMatiere" required>
                <option value="" disabled selected>Choisir la matiere</option>
                <?php foreach($lesMatieres as $uneMatiere){ ?>
-                <option value="<?=$uneMatiere["idMatiere"]?>"><?=$uneMatiere["nomMatiere"]?></option>
+                <option value="<?=$uneMatiere->getIdMatiere()?>"><?=$uneMatiere->getNomMatiere()?></option>
                 <?php }?>
            </select>
         </div>

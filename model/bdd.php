@@ -7,7 +7,7 @@
 function etablirCo()
 {
     $urlSGBD="localhost";
-    $nomBDD="stagiaires"; // le nom de la BDD
+    $nomBDD="stagiaires_champlain"; // le nom de la BDD
     $loginBDD="root";
     $mdpBDD="";// le mdp est root si on utilise Mamp
     try{

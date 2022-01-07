@@ -24,6 +24,9 @@ switch($path)
     case "evaluation":
         require ("controler/evaluationControler.php");
         break;
+    case "matiere":
+        require ("controler/matiereControler.php");
+        break;
     default :
     require "view/404.php";
 }
