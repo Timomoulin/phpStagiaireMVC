@@ -43,8 +43,16 @@ switch ($action) {
         }
       break;
     case"traitementSup":
-        $idMat=filter_var($_GET["id"],FILTER_SANITIZE_NUMBER_INT);
-        //@TODO DELETEMATIERE dans matiere.php
+        $idMat=filter_var($_POST["id"],FILTER_SANITIZE_NUMBER_INT);
+        $resultat=deleteMatiere($idMat);
+        if($resultat==true){
+            $_SESSION["msg"]="Suppresion reusie";
+            header("location:?path=admin&action=matieres");
+        }
+        else{
+            $_SESSION["error"]="Echec de la suppresion";
+            header("location:?path=admin&action=matieres");
+        }
         break;
     default :
         require("view/404.php");

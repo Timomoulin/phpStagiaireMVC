@@ -62,6 +62,12 @@ function updateMatiere($unId,$unNom){
     }
 }
 
+/**
+ * Permet d'ajouter une matière dans la bdd
+ *
+ * @param string $unNom le nom de la matière
+ * @return boolean vrai si ok faux sinon
+ */
 function createMatiere($unNom){
     try {
         $connex=etablirCo();
@@ -72,6 +78,23 @@ function createMatiere($unNom){
 
 
     } catch (PDOException $error) {
+        echo $error->getMessage();
+        return false;
+    }
+}
+
+function deleteMatiere($unId){
+    try {
+        $connex=etablirCo();
+        $sql =$connex->prepare("DELETE FROM evaluation WHERE idMatiere=:id");
+        $sql->bindParam(":id",$unId);
+        $sql->execute();
+        $sql2 =$connex->prepare("DELETE FROM matiere WHERE idMatiere=:id");
+        $sql2->bindParam(":id",$unId);
+        $sql2->execute();
+        return true;
+    }
+    catch (PDOException $error) {
         echo $error->getMessage();
         return false;
     }
