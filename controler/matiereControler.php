@@ -11,7 +11,18 @@ switch ($action) {
         break;
     case "traitementAjout":
         $nom=filter_var($_POST["nom"],FILTER_SANITIZE_STRING);
-        //@TODO CREATEMATIERE dans matiere.php
+        $resultat=createMatiere($nom);
+        
+        if($resultat==true){
+            $_SESSION["msg"]="Ajout réusi";
+            header("location:?path=admin&action=matieres");
+        }
+        else{
+            $_SESSION["error"]="Echec de l'ajout";
+            header("location:?path=matiere&action=formAjout");
+        }
+        
+        break;
     case "formModif":
         $idMat=filter_var($_GET["id"],FILTER_SANITIZE_NUMBER_INT);
         $uneMatiere=fetchMatiereById($idMat);

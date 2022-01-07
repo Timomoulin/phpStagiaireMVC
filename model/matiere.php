@@ -62,5 +62,20 @@ function updateMatiere($unId,$unNom){
     }
 }
 
+function createMatiere($unNom){
+    try {
+        $connex=etablirCo();
+        $sql =$connex->prepare("INSERT INTO matiere (nomMatiere) values(:nom)");
+        $sql->bindParam(":nom",$unNom);
+        $sql->execute();
+        return true;
+
+
+    } catch (PDOException $error) {
+        echo $error->getMessage();
+        return false;
+    }
+}
+
 
 ?>
